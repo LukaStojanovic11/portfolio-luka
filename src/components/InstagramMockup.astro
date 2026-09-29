@@ -1,0 +1,297 @@
+---
+interface Post {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  username: string;
+  displayName: string;
+  bio: string;
+  postsCount: string;
+  followers: string;
+  following: string;
+  posts: Post[];
+  highlight?: Post;
+  highlightLabel?: string;
+}
+
+const {
+  username,
+  displayName,
+  bio,
+  postsCount,
+  followers,
+  following,
+  posts,
+  highlight,
+  highlightLabel,
+} = Astro.props;
+---
+
+<div class="ig-phone">
+  <div class="ig-phone__notch"></div>
+  <div class="ig-phone__screen">
+    <div class="ig-topbar">
+      <span class="ig-topbar__back">‹</span>
+      <span class="ig-topbar__user">{username}</span>
+      <span class="ig-topbar__menu">
+        <span></span><span></span><span></span>
+      </span>
+    </div>
+
+    <div class="ig-profile">
+      <div class="ig-avatar" aria-hidden="true">★</div>
+      <div class="ig-stats">
+        <div class="ig-stats__item">
+          <strong>{postsCount}</strong>
+          <span>publications</span>
+        </div>
+        <div class="ig-stats__item">
+          <strong>{followers}</strong>
+          <span>abonnés</span>
+        </div>
+        <div class="ig-stats__item">
+          <strong>{following}</strong>
+          <span>suivis</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ig-bio">
+      <strong>{displayName}</strong>
+      <p>{bio}</p>
+    </div>
+
+    <button type="button" class="ig-follow" tabindex="-1">Suivre</button>
+
+    {highlight && (
+      <div class="ig-highlights">
+        <div class="ig-highlight">
+          <div class="ig-highlight__ring">
+            <img src={highlight.src} alt={highlight.alt} loading="lazy" />
+          </div>
+          <span>{highlightLabel}</span>
+        </div>
+      </div>
+    )}
+
+    <div class="ig-tabs">
+      <span class="ig-tabs__item is-active">▦</span>
+      <span class="ig-tabs__item">▽</span>
+      <span class="ig-tabs__item">◇</span>
+    </div>
+
+    <div class="ig-grid">
+      {posts.map((post) => (
+        <div class="ig-grid__item">
+          <img src={post.src} alt={post.alt} loading="lazy" />
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .ig-phone {
+    width: 100%;
+    max-width: 300px;
+    margin-inline: auto;
+    background: #0f0f0f;
+    border: 10px solid #161616;
+    border-radius: 40px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.55);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ig-phone__notch {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 96px;
+    height: 20px;
+    background: #161616;
+    border-radius: 0 0 14px 14px;
+    z-index: 2;
+  }
+
+  .ig-phone__screen {
+    background: #fafafa;
+    color: #0a0a0a;
+    padding-top: 26px;
+    font-family: var(--font-body);
+  }
+
+  .ig-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.3rem 0.9rem 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .ig-topbar__back {
+    font-size: 1.2rem;
+    color: #0a0a0a;
+  }
+
+  .ig-topbar__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5px;
+  }
+
+  .ig-topbar__menu span {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #0a0a0a;
+  }
+
+  .ig-profile {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    padding: 0 0.9rem;
+  }
+
+  .ig-avatar {
+    flex-shrink: 0;
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-accent), #6b0f12);
+    color: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    font-family: var(--font-display);
+  }
+
+  .ig-stats {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .ig-stats__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.68rem;
+    color: #4a4a4a;
+  }
+
+  .ig-stats__item strong {
+    font-size: 0.92rem;
+    color: #0a0a0a;
+  }
+
+  .ig-bio {
+    padding: 0.6rem 0.9rem 0;
+    font-size: 0.74rem;
+    line-height: 1.4;
+  }
+
+  .ig-bio strong {
+    display: block;
+    font-size: 0.8rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .ig-bio p {
+    color: #4a4a4a;
+    max-width: none;
+  }
+
+  .ig-follow {
+    display: block;
+    width: calc(100% - 1.8rem);
+    margin: 0.7rem 0.9rem 0;
+    padding: 0.4rem;
+    background: var(--color-accent);
+    color: #fafafa;
+    border: none;
+    border-radius: 7px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    cursor: default;
+  }
+
+  .ig-highlights {
+    display: flex;
+    gap: 0.9rem;
+    padding: 0.85rem 0.9rem 0.2rem;
+  }
+
+  .ig-highlight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .ig-highlight__ring {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    padding: 2px;
+    background: linear-gradient(135deg, var(--color-accent), #0a0a0a);
+  }
+
+  .ig-highlight__ring img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #fafafa;
+  }
+
+  .ig-highlight span {
+    font-size: 0.6rem;
+    color: #4a4a4a;
+  }
+
+  .ig-tabs {
+    display: flex;
+    margin-top: 0.8rem;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .ig-tabs__item {
+    flex: 1;
+    text-align: center;
+    padding: 0.5rem 0;
+    font-size: 0.85rem;
+    color: #b0b0b0;
+  }
+
+  .ig-tabs__item.is-active {
+    color: #0a0a0a;
+    border-top: 1.5px solid #0a0a0a;
+    margin-top: -1px;
+  }
+
+  .ig-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .ig-grid__item {
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: #e8e8e8;
+  }
+
+  .ig-grid__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+</style>

@@ -1,5 +1,6 @@
 ---
 import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import LaptopMockup from '../../components/LaptopMockup.astro';
 ---
 
 <ProjectLayout
@@ -13,6 +14,17 @@ import ProjectLayout from '../../layouts/ProjectLayout.astro';
 >
   <section>
     <div class="container">
+      <LaptopMockup
+        src="/images/projects/odd/cover.jpg"
+        alt="Couverture du brief EduChildren — prototype Figma"
+        url="figma.com/design/BasesUI-EduChildren"
+        objectPosition="center"
+      />
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
       <span class="eyebrow section-num">01 — Contexte</span>
       <p>
         Projet mené autour de l'Objectif de Développement Durable n°4
@@ -21,14 +33,6 @@ import ProjectLayout from '../../layouts/ProjectLayout.astro';
         ONG, frais de fonctionnement élevés, difficulté à vérifier l'usage
         réel des fonds.
       </p>
-
-      <figure class="img-frame" style="margin-top: 2.5rem;">
-        <img
-          src="/images/projects/odd/cover.jpg"
-          alt="Couverture du brief EduChildren"
-          loading="lazy"
-        />
-      </figure>
     </div>
   </section>
 

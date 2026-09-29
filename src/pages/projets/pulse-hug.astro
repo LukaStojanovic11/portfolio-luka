@@ -1,5 +1,6 @@
 ---
 import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import LaptopMockup from '../../components/LaptopMockup.astro';
 ---
 
 <ProjectLayout
@@ -9,6 +10,17 @@ import ProjectLayout from '../../layouts/ProjectLayout.astro';
   meta={[{ label: 'Client / cadre', value: 'Collaboration HUG × HEIG-VD' }]}
   externalLink={{ label: 'Voir la démo', url: 'https://dondusang.loannjuillerat.ch/' }}
 >
+  <section>
+    <div class="container">
+      <LaptopMockup
+        src="/images/projects/hug/onepager.jpg"
+        alt="One-pager infographique du concept Pulse pour les HUG"
+        url="dondusang.loannjuillerat.ch"
+        objectPosition="top"
+      />
+    </div>
+  </section>
+
   <section>
     <div class="container">
       <span class="eyebrow section-num">01 — Contexte</span>
@@ -55,14 +67,6 @@ import ProjectLayout from '../../layouts/ProjectLayout.astro';
           vainqueurs et candidature simplifiée.
         </li>
       </ul>
-
-      <figure class="img-frame" style="margin-top: 2.5rem;">
-        <img
-          src="/images/projects/hug/onepager.jpg"
-          alt="One-pager infographique du concept Pulse"
-          loading="lazy"
-        />
-      </figure>
     </div>
   </section>
 

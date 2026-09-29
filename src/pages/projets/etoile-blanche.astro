@@ -1,5 +1,6 @@
 ---
 import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import InstagramMockup from '../../components/InstagramMockup.astro';
 ---
 
 <ProjectLayout
@@ -98,28 +99,44 @@ import ProjectLayout from '../../layouts/ProjectLayout.astro';
           />
         </figure>
       </div>
-      <div class="gallery" style="margin-top: 1.25rem;">
-        <figure class="img-frame">
-          <img
-            src="/images/projects/etoile-blanche/post1.jpg"
-            alt="Post Instagram 'Le Clair' — cocktail signature"
-            loading="lazy"
-          />
-        </figure>
-        <figure class="img-frame">
-          <img
-            src="/images/projects/etoile-blanche/story1.jpg"
-            alt="Story Instagram 'L'essentiel suffit' — philosophie de marque"
-            loading="lazy"
-          />
-        </figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <span class="eyebrow section-num">05 — Aperçu du compte Instagram</span>
+      <p>
+        Les templates de posts et stories appliqués tels qu'ils apparaîtraient
+        sur le profil de l'établissement — grille de contenu cohérente,
+        alternant produits, coulisses et signature de marque.
+      </p>
+
+      <div style="margin-top: 2.5rem;">
+        <InstagramMockup
+          username="etoileblanche"
+          displayName="L'Étoile Blanche"
+          bio="Restaurant · Lausanne — L'essentiel suffit. Cuisine de saison, cocktails signature."
+          postsCount="128"
+          followers="2 340"
+          following="186"
+          highlight={{
+            src: '/images/projects/etoile-blanche/story1.jpg',
+            alt: "Story 'L'essentiel suffit'",
+          }}
+          highlightLabel="Philosophie"
+          posts={[
+            { src: '/images/projects/etoile-blanche/post3.jpg', alt: "Post 'Fumant'" },
+            { src: '/images/projects/etoile-blanche/post2.jpg', alt: "Post 'Le Geste Juste'" },
+            { src: '/images/projects/etoile-blanche/post1.jpg', alt: "Post 'Le Clair'" },
+          ]}
+        />
       </div>
     </div>
   </section>
 
   <section>
     <div class="container">
-      <span class="eyebrow section-num">05 — Résultat</span>
+      <span class="eyebrow section-num">06 — Résultat</span>
       <div class="callout">
         <p>
           Un système simple à utiliser en interne (templates réutilisables),

@@ -1,5 +1,6 @@
 ---
 import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import LaptopMockup from '../../components/LaptopMockup.astro';
 ---
 
 <ProjectLayout
@@ -10,20 +11,23 @@ import ProjectLayout from '../../layouts/ProjectLayout.astro';
 >
   <section>
     <div class="container">
+      <LaptopMockup
+        src="/images/projects/fightstart/cover.svg"
+        alt="Mockup de la boutique en ligne FightStart.ch"
+        url="fightstart.ch"
+        objectPosition="center"
+      />
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
       <span class="eyebrow section-num">01 — Contexte</span>
       <p>
         Conception d'un site e-commerce fictif (projet d'étude HEIG-VD) dédié
         à la vente de matériel de sport de combat pour débutants en Suisse :
         sacs de frappe, protections, sacs de sport.
       </p>
-
-      <figure class="img-frame" style="margin-top: 2.5rem;">
-        <img
-          src="/images/projects/fightstart/cover.svg"
-          alt="Illustration du projet FightStart.ch"
-          loading="lazy"
-        />
-      </figure>
     </div>
   </section>
 
