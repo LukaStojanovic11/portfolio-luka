@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Merci" description="Votre message a bien été envoyé.">
+  <section class="section merci">
+    <div class="container merci__inner">
+      <span class="eyebrow">Message envoyé</span>
+      <h1>Merci !</h1>
+      <p class="lede">
+        Votre message a bien été reçu. Je vous répondrai dans les plus brefs
+        délais.
+      </p>
+      <a href="/" class="btn btn--accent">Retour à l'accueil</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .merci {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .merci__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+</style>

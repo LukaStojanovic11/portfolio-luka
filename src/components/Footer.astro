@@ -1,0 +1,79 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__brand">
+      <a href="/" class="site-footer__logo">LUKA STOJANOVIC</a>
+      <p class="site-footer__tagline">Designer UX/UI &amp; ingénieur des médias</p>
+    </div>
+
+    <nav class="site-footer__links" aria-label="Réseaux et contact">
+      <a href="mailto:sluka1008@gmail.com" class="link-underline">Email</a>
+      <a href="https://www.linkedin.com/in/luka-stojanovic-434a962a1/" target="_blank" rel="noopener noreferrer" class="link-underline">LinkedIn</a>
+      <a href="https://github.com/LukaStojanovic11" target="_blank" rel="noopener noreferrer" class="link-underline">GitHub</a>
+    </nav>
+
+    <div class="site-footer__bottom">
+      <span>&copy; {year} Luka Stojanovic</span>
+      <a href="#top" class="site-footer__top">Retour en haut ↑</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--color-border);
+    padding-block: var(--space-lg);
+    margin-top: var(--space-lg);
+  }
+
+  .site-footer__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .site-footer__logo {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+  }
+
+  .site-footer__tagline {
+    margin-top: 0.4rem;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+
+  .site-footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.75rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .site-footer__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+
+  .site-footer__top {
+    color: var(--color-text-muted);
+    transition: color var(--transition-fast);
+  }
+
+  .site-footer__top:hover {
+    color: var(--color-accent);
+  }
+</style>

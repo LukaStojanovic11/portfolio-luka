@@ -1,0 +1,265 @@
+---
+import Layout from './Layout.astro';
+
+interface Props {
+  title: string;
+  tags: string[];
+  meta?: { label: string; value: string }[];
+  externalLink?: { label: string; url: string };
+  description?: string;
+}
+
+const { title, tags, meta = [], externalLink, description } = Astro.props;
+---
+
+<Layout title={title} description={description}>
+  <section class="project-hero">
+    <div class="container project-hero__inner">
+      <a href="/#projets" class="link-underline back-link reveal">← Tous les projets</a>
+      <div class="project-hero__tags reveal">
+        {tags.map((tag) => <span class="tag">{tag}</span>)}
+      </div>
+      <h1 class="reveal">{title}</h1>
+
+      {meta.length > 0 && (
+        <dl class="project-meta reveal">
+          {meta.map((item) => (
+            <div class="project-meta__item">
+              <dt>{item.label}</dt>
+              <dd>{item.value}</dd>
+            </div>
+          ))}
+        </dl>
+      )}
+
+      {externalLink && (
+        <a
+          href={externalLink.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn--accent reveal"
+        >
+          {externalLink.label} ↗
+        </a>
+      )}
+    </div>
+  </section>
+
+  <div class="project-body">
+    <slot />
+  </div>
+
+  <section class="section section--tight project-footer-nav">
+    <div class="container">
+      <a href="/#projets" class="btn reveal">← Retour aux projets</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .project-hero {
+    padding-block: var(--space-lg) var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .project-hero__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+
+  .back-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  .project-hero__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .project-hero h1 {
+    margin-top: 0.25rem;
+  }
+
+  .project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.75rem;
+    margin-top: 0.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+    width: 100%;
+  }
+
+  .project-meta__item dt {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: 0.3rem;
+  }
+
+  .project-meta__item dd {
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  .project-footer-nav {
+    border-top: 1px solid var(--color-border);
+  }
+</style>
+
+<style is:global>
+  .project-body section {
+    padding-block: var(--space-lg);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .project-body section:last-child {
+    border-bottom: none;
+  }
+
+  .project-body .section-num {
+    margin-bottom: 1rem;
+  }
+
+  .project-body h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  .project-body p {
+    max-width: 70ch;
+  }
+
+  .project-body p + p {
+    margin-top: 1.1rem;
+  }
+
+  .project-body ul.styled-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    margin-top: 1rem;
+  }
+
+  .project-body ul.styled-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    color: var(--color-text-muted);
+    max-width: 65ch;
+  }
+
+  .project-body ul.styled-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 8px;
+    height: 8px;
+    background: var(--color-accent);
+    border-radius: 50%;
+  }
+
+  .project-body .two-col {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  @media (min-width: 768px) {
+    .project-body .two-col {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .project-body .img-frame {
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--color-bg-elevated);
+  }
+
+  .project-body .img-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .project-body .gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .project-body .gallery {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .project-body .gallery--3 {
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 640px) {
+    .project-body .gallery--3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .project-body .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .project-body .stat-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .project-body .stat-card {
+    padding: 1.5rem;
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+  }
+
+  .project-body .stat-card__value {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .project-body .stat-card__label {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+
+  .project-body .callout {
+    padding: 1.75rem;
+    background: var(--color-bg-elevated);
+    border-left: 3px solid var(--color-accent);
+    border-radius: 4px;
+  }
+
+  .project-body .callout p {
+    color: var(--color-text);
+  }
+
+  .project-body figcaption {
+    margin-top: 0.6rem;
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+  }
+</style>

@@ -1,0 +1,109 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { projects } from '../data/projects';
+---
+
+<Layout title="Luka Stojanovic">
+  <section class="hero">
+    <div class="container hero__inner">
+      <span class="eyebrow reveal">Designer UX/UI &amp; ingénieur des médias</span>
+      <h1 class="hero__title reveal">Luka<br />Stojanovic</h1>
+      <p class="lede hero__lede reveal">
+        Étudiant en Ingénierie des médias à la HEIG-VD, je conçois des expériences
+        digitales claires, utiles et soignées — de la recherche UX à la direction
+        artistique.
+      </p>
+      <a href="#projets" class="btn btn--accent reveal">Voir mes projets</a>
+    </div>
+  </section>
+
+  <section id="projets" class="section projects">
+    <div class="container">
+      <div class="projects__header reveal">
+        <span class="eyebrow">01 — Sélection</span>
+        <h2>Projets</h2>
+      </div>
+      <div class="projects__grid">
+        {projects.map((project, i) => <ProjectCard project={project} index={i} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight cta-band">
+    <div class="container cta-band__inner reveal">
+      <h2>Discutons de votre prochain projet</h2>
+      <a href="/a-propos#contact" class="btn">Me contacter</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    padding-block: var(--space-xl) var(--space-lg);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .hero__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .hero__title {
+    margin-top: 0.5rem;
+  }
+
+  .hero__lede {
+    max-width: 46ch;
+  }
+
+  .hero .btn {
+    margin-top: 1rem;
+  }
+
+  .projects__header {
+    margin-bottom: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .projects__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  @media (min-width: 640px) {
+    .projects__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .projects__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .cta-band {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .cta-band__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    align-items: flex-start;
+  }
+
+  @media (min-width: 768px) {
+    .cta-band__inner {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+</style>

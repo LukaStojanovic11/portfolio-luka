@@ -1,0 +1,249 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const skills = [
+  'UX Research',
+  'UI Design',
+  'Figma',
+  'Direction artistique',
+  'Identité visuelle',
+  'InDesign',
+  'Business Model & Stratégie',
+  'HTML/CSS',
+  'WordPress',
+];
+---
+
+<Layout
+  title="À propos"
+  description="Luka Stojanovic, étudiant en Ingénierie des médias à la HEIG-VD. Recherche UX, direction artistique, branding et développement front-end."
+>
+  <section class="section about">
+    <div class="container about__grid">
+      <div class="about__photo reveal">
+        <img src="/images/profile/luka-photo.png" alt="Portrait de Luka Stojanovic" />
+      </div>
+
+      <div class="about__content reveal">
+        <span class="eyebrow">À propos</span>
+        <h1 class="about__title">Luka Stojanovic</h1>
+
+        <div class="about__bio">
+          <p>
+            Je m'appelle Luka Stojanovic, étudiant en Ingénierie des médias
+            (filière COMEM) à la HEIG-VD. Je m'intéresse à tout ce qui touche
+            à la conception digitale : recherche UX, direction artistique,
+            branding et développement front-end.
+          </p>
+          <p>
+            Ce qui m'anime, c'est de transformer un problème complexe (un
+            parcours utilisateur confus, une identité visuelle éclatée, une
+            offre difficile à lire) en une solution simple, claire et
+            cohérente — sans sacrifier l'exigence graphique.
+          </p>
+          <p>
+            Mes projets récents couvrent la recherche UX (personas, tests
+            utilisateurs, prototypage Figma), le branding (identité visuelle,
+            réseaux sociaux, supports print) et le développement de sites
+            (e-commerce, sites vitrines).
+          </p>
+        </div>
+
+        <div class="about__block">
+          <span class="eyebrow">Compétences</span>
+          <ul class="about__skills">
+            {skills.map((skill) => <li class="tag">{skill}</li>)}
+          </ul>
+        </div>
+
+        <div class="about__block">
+          <span class="eyebrow">Formation</span>
+          <p class="about__formation">Ingénierie des médias, HEIG-VD (COMEM)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section section--tight contact">
+    <div class="container contact__grid">
+      <div class="contact__intro reveal">
+        <span class="eyebrow">02 — Contact</span>
+        <h2>Discutons</h2>
+        <p class="lede">
+          Une question, un projet, une opportunité ? Écrivez-moi directement ou
+          retrouvez-moi sur LinkedIn et GitHub.
+        </p>
+
+        <ul class="contact__links">
+          <li>
+            <a href="mailto:sluka1008@gmail.com" class="link-underline">sluka1008@gmail.com</a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/luka-stojanovic-434a962a1/" target="_blank" rel="noopener noreferrer" class="link-underline">LinkedIn</a>
+          </li>
+          <li>
+            <a href="https://github.com/LukaStojanovic11" target="_blank" rel="noopener noreferrer" class="link-underline">GitHub</a>
+          </li>
+        </ul>
+      </div>
+
+      <form
+        name="contact"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        action="/merci"
+        class="contact-form reveal"
+      >
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="contact-form__hidden">
+          <label>Ne pas remplir : <input name="bot-field" /></label>
+        </p>
+
+        <div class="contact-form__field">
+          <label for="name">Nom</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+
+        <div class="contact-form__field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <div class="contact-form__field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--accent">Envoyer</button>
+      </form>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .about__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  @media (min-width: 860px) {
+    .about__grid {
+      grid-template-columns: 340px 1fr;
+      align-items: start;
+    }
+  }
+
+  .about__photo img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+  }
+
+  .about__title {
+    margin-block: 0.5rem 1.75rem;
+  }
+
+  .about__bio {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .about__block {
+    margin-bottom: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .about__skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .about__formation {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  .contact {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .contact__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  @media (min-width: 860px) {
+    .contact__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .contact__intro h2 {
+    margin-block: 0.5rem 1rem;
+  }
+
+  .contact__links {
+    margin-top: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .contact-form__hidden {
+    position: absolute;
+    left: -9999px;
+  }
+
+  .contact-form__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .contact-form__field label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  .contact-form__field input,
+  .contact-form__field textarea {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 0.85em 1em;
+    color: var(--color-text);
+    transition: border-color var(--transition-fast);
+    resize: vertical;
+  }
+
+  .contact-form__field input:focus,
+  .contact-form__field textarea:focus {
+    border-color: var(--color-accent);
+    outline: none;
+  }
+
+  .contact-form .btn {
+    align-self: flex-start;
+  }
+</style>
