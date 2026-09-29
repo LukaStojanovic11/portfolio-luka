@@ -6,6 +6,12 @@ export interface Project {
   tags: string[];
   cover: string;
   coverAlt: string;
+  /** browser = mockup fenêtre navigateur (projets digitaux) · print = mockup document/planche (branding, print, stratégie) */
+  coverStyle: 'browser' | 'print';
+  /** object-position CSS pour cadrer la partie la plus forte du visuel */
+  coverPosition?: string;
+  /** facteur de zoom (scale) appliqué au visuel de couverture, pour resserrer sur un détail */
+  coverZoom?: number;
 }
 
 export const projects: Project[] = [
@@ -17,7 +23,9 @@ export const projects: Project[] = [
       'Repenser le parcours de don du sang pour combler le delta entre inscriptions et dons réels.',
     tags: ['UX/UI', 'Recherche', 'Concept digital'],
     cover: '/images/projects/hug/onepager.jpg',
-    coverAlt: 'One-pager infographique du concept Pulse pour les HUG',
+    coverAlt: 'One-pager infographique du concept Pulse pour les HUG, avec la mascotte Courage',
+    coverStyle: 'browser',
+    coverPosition: 'center top',
   },
   {
     slug: 'educhildren-odd',
@@ -27,7 +35,9 @@ export const projects: Project[] = [
       'Une plateforme de parrainage scolaire transparente, pensée pour restaurer la confiance des donateurs.',
     tags: ['UX Research', 'Prototypage', 'ODD 4'],
     cover: '/images/projects/odd/cover.jpg',
-    coverAlt: 'Couverture du brief EduChildren',
+    coverAlt: 'Couverture du brief EduChildren — ODD 4, Éducation de qualité',
+    coverStyle: 'browser',
+    coverPosition: 'center',
   },
   {
     slug: 'fightstart',
@@ -37,7 +47,9 @@ export const projects: Project[] = [
       'Boutique en ligne de matériel de sport de combat pour débutants, de la stratégie à la mise en ligne.',
     tags: ['E-commerce', 'WordPress', 'Stratégie digitale'],
     cover: '/images/projects/fightstart/cover.svg',
-    coverAlt: 'Capture du site FightStart.ch',
+    coverAlt: 'Mockup de la boutique en ligne FightStart.ch',
+    coverStyle: 'browser',
+    coverPosition: 'center',
   },
   {
     slug: 'etoile-blanche',
@@ -46,8 +58,10 @@ export const projects: Project[] = [
     summary:
       "Refonte de l'identité visuelle d'un restaurant lausannois : menus, réseaux sociaux, playbook de marque.",
     tags: ['Branding', 'Direction artistique', 'Print & Digital'],
-    cover: '/images/projects/etoile-blanche/menu-signature.jpg',
-    coverAlt: 'Menu signature redesigné pour L\'Étoile Blanche',
+    cover: '/images/projects/etoile-blanche/post3.jpg',
+    coverAlt: 'Post Instagram "Fumant" — cordon bleu fumant, série signature Étoile Blanche',
+    coverStyle: 'print',
+    coverPosition: 'center top',
   },
   {
     slug: 'ancoro',
@@ -57,7 +71,10 @@ export const projects: Project[] = [
       'Un service de navettes B2B pensé comme outil de marque employeur.',
     tags: ['Stratégie', 'Business Model', 'Mobilité B2B'],
     cover: '/images/projects/ancoro/business-model-canvas.jpg',
-    coverAlt: 'Planche Business Model Canvas du projet Ancoro',
+    coverAlt: 'Logo Ancoro et navette de marque employeur, extrait de la planche stratégique',
+    coverStyle: 'print',
+    coverPosition: 'left top',
+    coverZoom: 2.6,
   },
   {
     slug: 'design-editorial',
@@ -67,7 +84,9 @@ export const projects: Project[] = [
       'Yearbook institutionnel 28 pages et infographie sur la risographie.',
     tags: ['Mise en page', 'InDesign', 'Illustration'],
     cover: '/images/projects/yearbook-riso/yearbook-cover.jpg',
-    coverAlt: 'Couverture du Yearbook 2025',
+    coverAlt: 'Couverture du Yearbook 2025 — Ingénierie des médias',
+    coverStyle: 'print',
+    coverPosition: 'center top',
   },
 ];
 

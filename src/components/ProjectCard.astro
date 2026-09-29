@@ -11,8 +11,24 @@ const num = String(index + 1).padStart(2, '0');
 ---
 
 <a href={`/projets/${project.slug}`} class="project-card reveal">
-  <div class="project-card__media">
-    <img src={project.cover} alt={project.coverAlt} loading="lazy" />
+  <div class={`project-card__media project-card__media--${project.coverStyle}`}>
+    {project.coverStyle === 'browser' && (
+      <div class="browser-chrome" aria-hidden="true">
+        <span class="browser-chrome__dot"></span>
+        <span class="browser-chrome__dot"></span>
+        <span class="browser-chrome__dot"></span>
+      </div>
+    )}
+    <div class="project-card__media-inner">
+      <img
+        src={project.cover}
+        alt={project.coverAlt}
+        loading="lazy"
+        style={`object-position: ${project.coverPosition ?? 'center'}; --cover-zoom: ${
+          project.coverZoom ?? 1
+        }; --cover-origin: ${project.coverPosition ?? 'center'};`}
+      />
+    </div>
   </div>
   <div class="project-card__body">
     <span class="project-card__num">{num}</span>
@@ -35,29 +51,75 @@ const num = String(index + 1).padStart(2, '0');
     border: 1px solid var(--color-border);
     border-radius: 4px;
     overflow: hidden;
-    transition: transform var(--transition-base), border-color var(--transition-base);
+    transition: transform var(--transition-base), border-color var(--transition-base),
+      box-shadow var(--transition-base);
   }
 
   .project-card:hover {
     transform: translateY(-6px);
     border-color: var(--color-accent);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
   }
 
+  /* Media container */
   .project-card__media {
     aspect-ratio: 4 / 3;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
     background: var(--color-bg-elevated-2);
   }
 
-  .project-card__media img {
+  .project-card__media-inner {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    min-height: 0;
+  }
+
+  .project-card__media-inner img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 500ms ease;
+    transform: scale(var(--cover-zoom, 1));
+    transform-origin: var(--cover-origin, center);
+    transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .project-card:hover .project-card__media img {
-    transform: scale(1.05);
+  .project-card:hover .project-card__media-inner img {
+    transform: scale(calc(var(--cover-zoom, 1) * 1.06));
+  }
+
+  /* Browser mockup — projets digitaux (UX/UI, e-commerce) */
+  .browser-chrome {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.65rem 0.85rem;
+    background: #141414;
+    border-bottom: 1px solid var(--color-border);
+    flex-shrink: 0;
+  }
+
+  .browser-chrome__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #3a3a3a;
+  }
+
+  .browser-chrome__dot:first-child {
+    background: var(--color-accent);
+  }
+
+  /* Print mockup — branding, documents, planches stratégiques */
+  .project-card__media--print {
+    padding: 14px;
+  }
+
+  .project-card__media--print .project-card__media-inner {
+    border-radius: 3px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
   }
 
   .project-card__body {
