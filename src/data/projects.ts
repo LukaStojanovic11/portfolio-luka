@@ -46,10 +46,10 @@ export const projects: Project[] = [
     summary:
       'Boutique en ligne de matériel de sport de combat pour débutants, de la stratégie à la mise en ligne.',
     tags: ['E-commerce', 'WordPress', 'Stratégie digitale'],
-    cover: '/images/projects/fightstart/cover.svg',
-    coverAlt: 'Mockup de la boutique en ligne FightStart.ch',
+    cover: '/images/projects/fightstart/screenshot-home.webp',
+    coverAlt: 'Capture de la page d\'accueil de FightStart.ch',
     coverStyle: 'browser',
-    coverPosition: 'center',
+    coverPosition: 'top',
   },
   {
     slug: 'etoile-blanche',

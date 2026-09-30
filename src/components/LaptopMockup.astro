@@ -4,13 +4,14 @@ interface Props {
   alt: string;
   url?: string;
   objectPosition?: string;
+  showDeck?: boolean;
   class?: string;
 }
 
-const { src, alt, url, objectPosition = 'top', class: className } = Astro.props;
+const { src, alt, url, objectPosition = 'top', showDeck = true, class: className } = Astro.props;
 ---
 
-<div class:list={['laptop', className]}>
+<div class:list={['laptop', { 'laptop--no-deck': !showDeck }, className]}>
   <div class="laptop__screen">
     <div class="laptop__chrome">
       <span class="laptop__dot"></span>
@@ -22,8 +23,13 @@ const { src, alt, url, objectPosition = 'top', class: className } = Astro.props;
       <img src={src} alt={alt} loading="lazy" style={`object-position: ${objectPosition};`} />
     </div>
   </div>
-  <div class="laptop__hinge"></div>
-  <div class="laptop__base"></div>
+
+  {showDeck && (
+    <div class="laptop__deck">
+      <div class="laptop__keys" aria-hidden="true"></div>
+      <div class="laptop__trackpad" aria-hidden="true"></div>
+    </div>
+  )}
 </div>
 
 <style>
@@ -31,26 +37,47 @@ const { src, alt, url, objectPosition = 'top', class: className } = Astro.props;
     width: 100%;
     max-width: 720px;
     margin-inline: auto;
+    position: relative;
+  }
+
+  .laptop::after {
+    content: '';
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    bottom: -18px;
+    height: 26px;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.7), transparent 72%);
+    filter: blur(4px);
+    z-index: -1;
   }
 
   .laptop__screen {
-    background: #0f0f0f;
-    border: 1px solid #2a2a2a;
-    border-radius: 14px 14px 4px 4px;
-    padding: 10px 10px 0;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.55);
+    background: #0c0c0c;
+    border-radius: 14px 14px 3px 3px;
+    padding: 8px 8px 0;
+    box-shadow: 0 26px 50px rgba(0, 0, 0, 0.6);
+  }
+
+  .laptop--no-deck .laptop__screen {
+    border-radius: 12px;
+    padding-bottom: 8px;
+  }
+
+  .laptop--no-deck .laptop__content {
+    border-radius: 3px;
   }
 
   .laptop__chrome {
     display: flex;
     align-items: center;
-    gap: 6px;
-    padding: 0.15rem 0.4rem 0.6rem;
+    gap: 5px;
+    padding: 0.1rem 0.35rem 0.5rem;
   }
 
   .laptop__dot {
-    width: 9px;
-    height: 9px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background: #3a3a3a;
     flex-shrink: 0;
@@ -62,10 +89,10 @@ const { src, alt, url, objectPosition = 'top', class: className } = Astro.props;
 
   .laptop__url {
     margin-left: 0.75rem;
-    padding: 0.3rem 1rem;
+    padding: 0.25rem 1rem;
     background: #1c1c1c;
     border-radius: 999px;
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     color: var(--color-text-muted);
     letter-spacing: 0.02em;
   }
@@ -83,30 +110,34 @@ const { src, alt, url, objectPosition = 'top', class: className } = Astro.props;
     object-fit: cover;
   }
 
-  .laptop__hinge {
-    height: 8px;
-    background: linear-gradient(180deg, #1c1c1c, #0a0a0a);
-    border-radius: 0 0 3px 3px;
+  /* Socle clavier — aluminium, pour lire clairement "ordinateur portable" */
+  .laptop__deck {
+    background: linear-gradient(180deg, #e4e4e4 0%, #c2c2c2 55%, #aeaeae 100%);
+    border-radius: 0 0 10px 10px;
+    padding: 9px 8% 14px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
   }
 
-  .laptop__base {
-    height: 12px;
-    margin: 0 -18px;
-    background: linear-gradient(180deg, #232323, #151515);
-    clip-path: polygon(3% 0, 97% 0, 100% 100%, 0% 100%);
-    border-radius: 0 0 8px 8px;
-    position: relative;
+  .laptop__keys {
+    height: 28px;
+    border-radius: 4px;
+    background-color: #999;
+    background-image: repeating-linear-gradient(
+        90deg,
+        rgba(120, 120, 120, 0.55) 0 5px,
+        transparent 5px 9px
+      ),
+      repeating-linear-gradient(0deg, rgba(120, 120, 120, 0.4) 0 4px, transparent 4px 8px);
+    opacity: 0.75;
   }
 
-  .laptop__base::after {
-    content: '';
-    position: absolute;
-    top: 4px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background: #0a0a0a;
-    border-radius: 2px;
+  .laptop__trackpad {
+    width: 22%;
+    min-width: 60px;
+    height: 34px;
+    margin: 8px auto 0;
+    background: #b3b3b3;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
   }
 </style>
