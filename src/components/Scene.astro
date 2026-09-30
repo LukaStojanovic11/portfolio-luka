@@ -1,0 +1,48 @@
+---
+interface Props {
+  lit?: boolean;
+  class?: string;
+  style?: string;
+}
+
+const { lit = false, class: className, style } = Astro.props;
+---
+
+<div class:list={['scene', { 'scene--lit': lit }, className]} style={style}>
+  <div class="scene__vignette" aria-hidden="true"></div>
+  <div class="scene__plinth" aria-hidden="true"></div>
+  <slot />
+</div>
+
+<style>
+  .scene {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: #050505;
+  }
+
+  .scene__vignette {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    opacity: 0.7;
+    transition: opacity 1000ms ease;
+    background: radial-gradient(60% 55% at 50% 30%, rgba(255, 255, 255, 0.08), transparent 70%);
+  }
+
+  .scene--lit .scene__vignette {
+    opacity: 1;
+  }
+
+  .scene__plinth {
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    bottom: -6%;
+    height: 45%;
+    z-index: -1;
+    background: radial-gradient(ellipse at center, rgba(171, 35, 40, 0.16), transparent 72%);
+    filter: blur(20px);
+  }
+</style>

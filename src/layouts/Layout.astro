@@ -32,7 +32,7 @@ const pageTitle = title === 'Luka Stojanovic' ? title : `${title} — Luka Stoja
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter+Tight:wght@400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Inter+Tight:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
 
@@ -48,7 +48,7 @@ const pageTitle = title === 'Luka Stojanovic' ? title : `${title} — Luka Stoja
     <Footer />
 
     <script>
-      const revealEls = document.querySelectorAll('.reveal');
+      const revealEls = document.querySelectorAll('.reveal, .rule');
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {

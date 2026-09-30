@@ -1,92 +1,109 @@
 ---
 import ProjectLayout from '../../layouts/ProjectLayout.astro';
-import LaptopMockup from '../../components/LaptopMockup.astro';
+import Scene from '../../components/Scene.astro';
+import Laptop from '../../components/Laptop.astro';
+import Frame from '../../components/Frame.astro';
 ---
 
 <ProjectLayout
   title="Pulse — Trophée de la Générosité"
   description="Repenser le parcours de don du sang pour combler le delta entre inscriptions et dons réels. Collaboration HUG × HEIG-VD."
   tags={['UX/UI', 'Recherche', 'Concept digital']}
-  meta={[{ label: 'Client / cadre', value: 'Collaboration HUG × HEIG-VD' }]}
+  meta={[
+    { label: 'Client / cadre', value: 'Collaboration HUG × HEIG-VD' },
+    { label: 'Rôle', value: 'UX Research + UI Design' },
+    { label: 'Livrable', value: 'Concept digital' },
+  ]}
   externalLink={{ label: 'Voir la démo', url: 'https://dondusang.loannjuillerat.ch/' }}
 >
-  <section>
-    <div class="container">
-      <LaptopMockup
+  <section class="section--flush">
+    <Scene class="hero-scene" lit>
+      <Laptop
         src="/images/projects/hug/screenshot-home.jpg"
-        alt="Capture d'écran de la page d'accueil du site Pulse"
-        url="dondusang.loannjuillerat.ch"
-        objectPosition="top"
+        alt="Homepage du site Pulse pour les HUG"
+        duration="10s"
       />
+      <p class="hero-scene__hint">Survolez pour parcourir ↓</p>
+      <p class="hero-scene__caption">Fig. 01 — Accueil</p>
+      <p class="hero-scene__meta">dondusang.loannjuillerat.ch</p>
+    </Scene>
+  </section>
+
+  <section>
+    <div class="container claim-grid">
+      <span class="eyebrow">01 — Le contexte</span>
+      <div>
+        <h2 class="claim">
+          700 dons par jour, un delta de 30% <span style="color: var(--color-accent);">entre inscrits et donneurs.</span>
+        </h2>
+        <p class="claim-support">
+          Les HUG constatent un écart persistant entre le nombre de
+          personnes qui s'inscrivent à une collecte et celles qui donnent
+          réellement le jour J. Le Trophée de la Générosité, dispositif de
+          reconnaissance pour les entreprises partenaires, avait disparu
+          depuis 2010.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--coal">
+    <div class="container claim-grid">
+      <span class="eyebrow">02 — Problématique</span>
+      <h2 class="claim" style="font-size: clamp(1.85rem, 4.2vw, 3.25rem);">
+        Rassurer sans <span style="color: var(--color-accent);">complexifier</span> un
+        processus déjà encadré médicalement.
+      </h2>
     </div>
   </section>
 
   <section>
     <div class="container">
-      <span class="eyebrow section-num">01 — Contexte</span>
-      <p>
-        Les Hôpitaux Universitaires de Genève constatent un delta de 30%
-        entre le nombre de personnes qui s'inscrivent à une collecte de sang
-        et celles qui donnent réellement le jour J — alors que 700 dons sont
-        nécessaires chaque jour en Suisse. Le Trophée de la Générosité, un
-        dispositif de reconnaissance pour les entreprises partenaires, avait
-        disparu depuis 2010.
-      </p>
-    </div>
-  </section>
+      <div class="claim-grid">
+        <span class="eyebrow">03 — Démarche &amp; solution</span>
+        <ul class="styled-list">
+          <li>
+            Un <strong>quiz d'éligibilité interactif</strong> en 10 questions,
+            guidé par une mascotte (Courage, un castor en blouse médicale),
+            pour rassurer en amont sur l'éligibilité au don.
+          </li>
+          <li>
+            Des <strong>pages co-brandées</strong> par entreprise (logo +
+            charte CTS), accessibles via un lien unique par collecte, avec un
+            label CTS renouvelable intégrable à une démarche RSE.
+          </li>
+          <li>
+            La <strong>relance du Trophée de la Générosité</strong>, intégrée
+            au parcours RH dès la création d'une collecte, avec historique
+            des vainqueurs et candidature simplifiée.
+          </li>
+        </ul>
+      </div>
 
-  <section>
-    <div class="container">
-      <span class="eyebrow section-num">02 — Problématique</span>
-      <p>
-        Comment rassurer les donneurs potentiels, valoriser les entreprises
-        partenaires et redonner un cadre motivant aux collectes en
-        entreprise — sans complexifier un processus déjà encadré
-        médicalement ?
-      </p>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <span class="eyebrow section-num">03 — Démarche &amp; solution</span>
-      <ul class="styled-list">
-        <li>
-          Un <strong>quiz d'éligibilité interactif</strong> en 10 questions,
-          guidé par une mascotte (Courage, un castor en blouse médicale),
-          pour rassurer en amont sur l'éligibilité au don.
-        </li>
-        <li>
-          Des <strong>pages co-brandées</strong> par entreprise (logo +
-          charte CTS), accessibles via un lien unique par collecte, avec un
-          label CTS renouvelable intégrable à une démarche RSE.
-        </li>
-        <li>
-          La <strong>relance du Trophée de la Générosité</strong>, intégrée
-          au parcours RH dès la création d'une collecte, avec historique des
-          vainqueurs et candidature simplifiée.
-        </li>
-      </ul>
-
-      <div class="gallery" style="margin-top: 2.5rem; align-items: start;">
-        <LaptopMockup
+      <div class="two-col" style="margin-top: 3rem; align-items: start;">
+        <Frame
           src="/images/projects/hug/screenshot-quiz.jpg"
           alt="Quiz d'éligibilité guidé par la mascotte Courage"
-          showDeck={false}
+          url="dondusang.loannjuillerat.ch/quiz"
         />
-        <LaptopMockup
+        <Frame
           src="/images/projects/hug/screenshot-ubs.jpg"
           alt="Page co-brandée UBS × HUG"
-          objectPosition="top"
-          showDeck={false}
+          url="dondusang.loannjuillerat.ch/entreprise/ubs"
+          class="frame--offset"
         />
       </div>
     </div>
   </section>
 
-  <section>
+  <section class="section--coal">
     <div class="container">
-      <span class="eyebrow section-num">04 — Objectifs mesurables</span>
+      <div class="claim-grid">
+        <span class="eyebrow">04 — Objectifs mesurables</span>
+        <h2 class="claim" style="font-size: clamp(1.85rem, 4.2vw, 3.25rem);">
+          Des cibles chiffrées, <span style="color: var(--color-accent);">pas des vœux pieux.</span>
+        </h2>
+      </div>
       <div class="stat-grid">
         <div class="stat-card">
           <div class="stat-card__value">&gt; 70%</div>
@@ -109,16 +126,34 @@ import LaptopMockup from '../../components/LaptopMockup.astro';
   </section>
 
   <section>
-    <div class="container">
-      <span class="eyebrow section-num">05 — Résultat</span>
-      <div class="callout">
-        <p>
-          Une UX rassurante, proche de l'interface existante pour ne pas
-          dérouter les utilisateurs habitués, combinée à une mascotte
-          originale et un nouveau label — sans modifier le processus médical
-          existant.
+    <div class="container claim-grid">
+      <span class="eyebrow">05 — Résultat</span>
+      <div>
+        <p class="claim" style="font-size: clamp(1.65rem, 3.6vw, 2.75rem);">
+          Une UX rassurante, proche de l'existant — <span style="color: var(--color-accent);">une mascotte et un label en plus.</span>
+        </p>
+        <p class="claim-support">
+          Interface proche de celle déjà connue des utilisateurs habitués,
+          combinée à une mascotte originale et un nouveau label — sans
+          modifier le processus médical existant.
         </p>
       </div>
     </div>
   </section>
 </ProjectLayout>
+
+<style>
+  .frame--offset {
+    margin-top: 0;
+  }
+
+  @media (min-width: 768px) {
+    .frame--offset {
+      margin-top: 3rem;
+    }
+  }
+
+  .section--coal {
+    background: #0d0d0d;
+  }
+</style>

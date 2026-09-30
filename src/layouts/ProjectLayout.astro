@@ -21,6 +21,8 @@ const { title, tags, meta = [], externalLink, description } = Astro.props;
       </div>
       <h1 class="reveal">{title}</h1>
 
+      <div class="rule project-hero__rule" aria-hidden="true"></div>
+
       {meta.length > 0 && (
         <dl class="project-meta reveal">
           {meta.map((item) => (
@@ -70,11 +72,11 @@ const { title, tags, meta = [], externalLink, description } = Astro.props;
   }
 
   .back-link {
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--color-text-muted);
+    color: var(--color-text-fog);
   }
 
   .project-hero__tags {
@@ -87,23 +89,27 @@ const { title, tags, meta = [], externalLink, description } = Astro.props;
     margin-top: 0.25rem;
   }
 
+  .project-hero__rule {
+    width: 100%;
+    height: 1px;
+    background: var(--color-border);
+    margin-top: 0.75rem;
+  }
+
   .project-meta {
     display: flex;
     flex-wrap: wrap;
     gap: 1.75rem;
-    margin-top: 0.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--color-border);
     width: 100%;
   }
 
   .project-meta__item dt {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--color-text-muted);
-    margin-bottom: 0.3rem;
+    color: var(--color-accent);
+    margin-bottom: 0.4rem;
   }
 
   .project-meta__item dd {
@@ -124,6 +130,16 @@ const { title, tags, meta = [], externalLink, description } = Astro.props;
 
   .project-body section:last-child {
     border-bottom: none;
+  }
+
+  .project-body section.section--flush {
+    padding-block: var(--space-md);
+    padding-inline: 1.25rem;
+    border-bottom: none;
+  }
+
+  .project-body section.section--coal {
+    padding-block: var(--space-lg);
   }
 
   .project-body .section-num {
@@ -261,5 +277,128 @@ const { title, tags, meta = [], externalLink, description } = Astro.props;
     margin-top: 0.6rem;
     font-size: 0.82rem;
     color: var(--color-text-muted);
+  }
+
+  /* Scène héro (laptop 3D en situation) */
+  .project-body .hero-scene {
+    position: relative;
+    height: clamp(420px, 68vh, 760px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .project-body .hero-scene .laptop3d {
+    width: min(70vw, 1080px);
+  }
+
+  .project-body .hero-scene__caption {
+    position: absolute;
+    bottom: 1.75rem;
+    left: 1.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-text-ash);
+  }
+
+  .project-body .hero-scene__meta {
+    position: absolute;
+    bottom: 1.75rem;
+    right: 1.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-text-ash);
+  }
+
+  .project-body .hero-scene__hint {
+    position: absolute;
+    bottom: 1.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--color-text-ash);
+  }
+
+  /* Grande affirmation éditoriale (claim) */
+  .project-body .claim-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 860px) {
+    .project-body .claim-grid {
+      grid-template-columns: minmax(140px, 1fr) 3fr;
+      align-items: start;
+      gap: 2rem;
+    }
+  }
+
+  .project-body .claim {
+    font-size: clamp(2.25rem, 5.5vw, 4.75rem);
+    line-height: 0.95;
+  }
+
+  .project-body .claim-support {
+    margin-top: 2rem;
+    max-width: 32ch;
+  }
+
+  @media (min-width: 860px) {
+    .project-body .claim-support {
+      margin-left: 38%;
+    }
+  }
+
+  /* Piliers (colonnes séparées par une règle) */
+  .project-body .pillars {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 2.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .project-body .pillars {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .project-body .pillar {
+    padding-block: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .project-body .pillar {
+      padding: 1.5rem 1.75rem;
+      border-left: 1px solid var(--color-border);
+    }
+
+    .project-body .pillar:first-child {
+      border-left: none;
+      padding-left: 0;
+    }
+  }
+
+  .project-body .pillar__num {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--color-accent);
+  }
+
+  .project-body .pillar h3 {
+    margin-top: 1rem;
+  }
+
+  .project-body .pillar p {
+    margin-top: 0.75rem;
+    max-width: 22ch;
   }
 </style>

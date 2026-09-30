@@ -1,0 +1,93 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  url?: string;
+  duration?: string;
+  class?: string;
+}
+
+const { src, alt, url, duration = '9s', class: className } = Astro.props;
+---
+
+<div class:list={['frame', className]}>
+  <div class="frame__bar">
+    <span class="frame__dots">
+      <i></i><i></i><i></i>
+    </span>
+    {url && <span class="frame__url">{url}</span>}
+    <span class="frame__hint" aria-hidden="true">↓</span>
+  </div>
+  <div class="frame__screen screen" style={`--scroll: ${duration};`}>
+    <img src={src} alt={alt} loading="lazy" draggable="false" />
+  </div>
+</div>
+
+<style>
+  .frame {
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-elevated);
+  }
+
+  .frame__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.75rem 1.1rem;
+    border-bottom: 1px solid var(--color-border);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-text-ash);
+  }
+
+  .frame__dots {
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0;
+  }
+
+  .frame__dots i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-border);
+  }
+
+  .frame__url {
+    flex: 1;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .frame__hint {
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  .frame__screen {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: #fff;
+    cursor: ns-resize;
+    container-type: size;
+  }
+
+  .frame__screen img {
+    display: block;
+    width: 100%;
+    height: auto;
+    user-select: none;
+    transition: transform 1.6s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  .frame__screen:hover img {
+    transform: translateY(calc(-100% + 100cqh));
+    transition-duration: var(--scroll, 9s);
+  }
+</style>

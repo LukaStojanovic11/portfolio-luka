@@ -1,59 +1,74 @@
 ---
 import ProjectLayout from '../../layouts/ProjectLayout.astro';
-import LaptopMockup from '../../components/LaptopMockup.astro';
+import Scene from '../../components/Scene.astro';
+import Laptop from '../../components/Laptop.astro';
 ---
 
 <ProjectLayout
   title="EduChildren"
   description="Une plateforme de parrainage scolaire transparente, pensée pour restaurer la confiance des donateurs. Projet mené autour de l'ODD 4."
   tags={['UX Research', 'Prototypage', 'ODD 4 — Éducation de qualité']}
+  meta={[
+    { label: 'Cadre', value: 'Objectif de Développement Durable n°4' },
+    { label: 'Rôle', value: 'UX Research + Prototypage' },
+    { label: 'Équipe', value: '4 personnes' },
+  ]}
   externalLink={{
     label: 'Voir le prototype Figma',
     url: 'https://www.figma.com/design/9mwjQqhMEiVJbH1GfRrv8H/BasesUI-LukaStojanovic-WilliamVladStancu-SteveBenjamin-NabilMohamedHagos',
   }}
 >
-  <section>
-    <div class="container">
-      <LaptopMockup
+  <section class="section--flush">
+    <Scene class="hero-scene" lit>
+      <Laptop
         src="/images/projects/odd/cover.jpg"
-        alt="Couverture du brief EduChildren — prototype Figma"
-        url="figma.com/design/BasesUI-EduChildren"
-        objectPosition="center"
+        alt="Couverture du brief EduChildren — ODD 4"
       />
+      <p class="hero-scene__caption">Fig. 01 — Brief du projet</p>
+      <p class="hero-scene__meta">ODD 4 · Éducation de qualité</p>
+    </Scene>
+  </section>
+
+  <section>
+    <div class="container claim-grid">
+      <span class="eyebrow">01 — Le contexte</span>
+      <div>
+        <h2 class="claim">
+          Donner pour l'éducation, <span style="color: var(--color-accent);">sans savoir où va l'argent.</span>
+        </h2>
+        <p class="claim-support">
+          Recherche menée sur les freins au don pour l'éducation dans les
+          pays défavorisés : manque de transparence des ONG, frais de
+          fonctionnement élevés, difficulté à vérifier l'usage réel des
+          fonds.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--coal">
+    <div class="container claim-grid">
+      <span class="eyebrow">02 — Recherche utilisateur</span>
+      <div>
+        <h2 class="claim" style="font-size: clamp(1.85rem, 4.2vw, 3.25rem);">
+          Deux profils, <span style="color: var(--color-accent);">une même méfiance.</span>
+        </h2>
+        <p class="claim-support">
+          <strong>Thomas</strong>, chef de projet tech de 32 ans, sensible
+          aux causes sociales mais méfiant envers les intermédiaires
+          financiers non identifiés. <strong>Sophie</strong>, enseignante de
+          45 ans, en quête d'un lien humain concret avec l'enfant ou l'école
+          soutenue.
+        </p>
+      </div>
     </div>
   </section>
 
   <section>
     <div class="container">
-      <span class="eyebrow section-num">01 — Contexte</span>
-      <p>
-        Projet mené autour de l'Objectif de Développement Durable n°4
-        (éducation de qualité). Recherche menée sur les freins au don pour
-        l'éducation dans les pays défavorisés : manque de transparence des
-        ONG, frais de fonctionnement élevés, difficulté à vérifier l'usage
-        réel des fonds.
-      </p>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <span class="eyebrow section-num">02 — Recherche utilisateur</span>
-      <p>
-        Deux personas construits à partir des recherches :
-        <strong>Thomas</strong>, chef de projet tech de 32 ans, sensible aux
-        causes sociales mais méfiant envers les intermédiaires financiers non
-        identifiés ; <strong>Sophie</strong>, enseignante de 45 ans, en quête
-        d'un lien humain concret avec l'enfant ou l'école soutenue.
-      </p>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <span class="eyebrow section-num">03 — How Might We</span>
-      <div class="callout">
-        <p>
+      <span class="eyebrow">03 — How Might We</span>
+      <div class="callout" style="margin-top: 1.5rem;">
+        <p style="font-size: clamp(1.15rem, 2.2vw, 1.5rem); font-weight: 600;">
           « Comment garantir une transparence totale et un suivi engageant
           pour les donateurs souhaitant financer la scolarité d'un enfant
           dans des pays défavorisés via un site internet ? »
@@ -62,31 +77,37 @@ import LaptopMockup from '../../components/LaptopMockup.astro';
     </div>
   </section>
 
-  <section>
+  <section class="section--coal">
     <div class="container">
-      <span class="eyebrow section-num">04 — Solution retenue</span>
-      <p>Une plateforme hybride combinant :</p>
-      <ul class="styled-list">
-        <li>
-          des <strong>smart contracts</strong> pour sécuriser les dons et
-          automatiser les paiements,
-        </li>
-        <li>
-          un <strong>dashboard de transparence financière</strong> pour
-          suivre le flux d'argent en temps réel,
-        </li>
-        <li>
-          un <strong>module de parrainage</strong> pour suivre l'évolution
-          de l'enfant soutenu.
-        </li>
-      </ul>
+      <div class="claim-grid">
+        <span class="eyebrow">04 — Solution retenue</span>
+        <div>
+          <h2 class="claim" style="font-size: clamp(1.85rem, 4.2vw, 3.25rem);">
+            Une plateforme hybride, <span style="color: var(--color-accent);">pensée pour la confiance.</span>
+          </h2>
+          <ul class="styled-list" style="margin-top: 2rem;">
+            <li>
+              des <strong>smart contracts</strong> pour sécuriser les dons et
+              automatiser les paiements,
+            </li>
+            <li>
+              un <strong>dashboard de transparence financière</strong> pour
+              suivre le flux d'argent en temps réel,
+            </li>
+            <li>
+              un <strong>module de parrainage</strong> pour suivre
+              l'évolution de l'enfant soutenu.
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
   <section>
-    <div class="container">
-      <span class="eyebrow section-num">05 — Protection des mineurs</span>
-      <p>
+    <div class="container claim-grid">
+      <span class="eyebrow">05 — Protection des mineurs</span>
+      <p class="claim-support" style="margin-left: 0; max-width: 60ch;">
         Le projet intègre un volet éthique fort : anonymisation systématique
         des enfants sur les plateformes, appels encadrés exclusivement via
         l'école, communications toujours supervisées par un parent ou
@@ -95,10 +116,10 @@ import LaptopMockup from '../../components/LaptopMockup.astro';
     </div>
   </section>
 
-  <section>
-    <div class="container">
-      <span class="eyebrow section-num">06 — Itérations post-tests</span>
-      <p>
+  <section class="section--coal">
+    <div class="container claim-grid">
+      <span class="eyebrow">06 — Itérations post-tests</span>
+      <p class="claim-support" style="margin-left: 0; max-width: 60ch;">
         Les tests ont révélé une perception erronée du coût réel du
         parrainage (~30 CHF/mois) et un besoin de réassurance sur la
         vérification des écoles partenaires — deux axes d'amélioration
@@ -107,3 +128,9 @@ import LaptopMockup from '../../components/LaptopMockup.astro';
     </div>
   </section>
 </ProjectLayout>
+
+<style>
+  .section--coal {
+    background: #0d0d0d;
+  }
+</style>

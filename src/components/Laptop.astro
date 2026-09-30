@@ -1,0 +1,134 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  angle?: number;
+  duration?: string;
+  class?: string;
+  width?: string;
+}
+
+const { src, alt, angle = 0, duration = '9s', class: className, width } = Astro.props;
+---
+
+<div
+  class:list={['laptop3d', className]}
+  style={`perspective: 2400px;${width ? ` width: ${width};` : ''}`}
+>
+  <div class="laptop3d__rig" style={`transform: rotateY(${angle}deg) rotateX(4deg);`}>
+    <div class="laptop3d__lid">
+      <div class="laptop3d__bezel">
+        <div class="laptop3d__camera" aria-hidden="true"></div>
+        <div class="laptop3d__screen screen" style={`--scroll: ${duration};`}>
+          <img src={src} alt={alt} loading="lazy" draggable="false" />
+          <div class="laptop3d__glass" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+    <div class="laptop3d__hinge" aria-hidden="true">
+      <div class="laptop3d__notch"></div>
+    </div>
+    <div class="laptop3d__shadow" aria-hidden="true"></div>
+  </div>
+</div>
+
+<style>
+  .laptop3d {
+    width: 100%;
+  }
+
+  .laptop3d__rig {
+    transform-style: preserve-3d;
+    transition: transform 700ms ease;
+  }
+
+  .laptop3d__lid {
+    position: relative;
+    width: 86%;
+    margin-inline: auto;
+    border-radius: 1.1rem 1.1rem 0.35rem 0.35rem;
+    padding: 0.45%;
+    background: linear-gradient(180deg, #3a3a3c, #232325 55%, #18181a);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 60px 120px -40px rgba(0, 0, 0, 1);
+  }
+
+  .laptop3d__bezel {
+    position: relative;
+    border-radius: 0.9rem 0.9rem 0.2rem 0.2rem;
+    background: #000;
+    padding: 2.2% 2.2% 3%;
+  }
+
+  .laptop3d__camera {
+    position: absolute;
+    left: 50%;
+    top: 1.1%;
+    width: 6px;
+    height: 6px;
+    min-width: 4px;
+    min-height: 4px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: #1c1c20;
+    box-shadow: 0 0 0 1px #2a2a30;
+  }
+
+  .laptop3d__screen {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: #fff;
+    cursor: ns-resize;
+    container-type: size;
+  }
+
+  .laptop3d__screen img {
+    display: block;
+    width: 100%;
+    height: auto;
+    user-select: none;
+    transition: transform 1.6s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  .laptop3d__screen:hover img {
+    transform: translateY(calc(-100% + 100cqh));
+    transition-duration: var(--scroll, 9s);
+  }
+
+  .laptop3d__glass {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(115deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0) 38%);
+  }
+
+  .laptop3d__hinge {
+    position: relative;
+    height: 0.9vw;
+    max-height: 16px;
+    min-height: 8px;
+    width: 100%;
+    margin-inline: auto;
+    border-radius: 0 0 1.4rem 1.4rem;
+    background: linear-gradient(180deg, #4a4a4d, #2a2a2c 55%, #101011);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+
+  .laptop3d__notch {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    height: 45%;
+    width: 14%;
+    transform: translateX(-50%);
+    border-radius: 0 0 8px 8px;
+    background: #1a1a1b;
+  }
+
+  .laptop3d__shadow {
+    height: 2rem;
+    width: 92%;
+    margin-inline: auto;
+    background: radial-gradient(ellipse at top, rgba(0, 0, 0, 0.95), transparent 70%);
+  }
+</style>

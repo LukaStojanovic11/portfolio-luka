@@ -1,0 +1,66 @@
+---
+interface Props {
+  src: string;
+  x: number;
+  y: number;
+  zoom: number;
+  label: string;
+  class?: string;
+}
+
+const { src, x, y, zoom, label, class: className } = Astro.props;
+const bgStyle = `background-image: url(${src}); background-size: ${zoom * 100}% auto; background-position: ${x}% ${y}%;`;
+---
+
+<figure class:list={['crop', 'reveal', className]}>
+  <div class="crop__frame">
+    <div class="crop__image" style={bgStyle} role="img" aria-label={label}></div>
+  </div>
+  <figcaption class="crop__caption">
+    <span>{label}</span><span class="crop__plus">+</span>
+  </figcaption>
+</figure>
+
+<style>
+  .crop {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .crop__frame {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    background: #fff;
+  }
+
+  .crop__image {
+    position: absolute;
+    inset: 0;
+    background-repeat: no-repeat;
+    transition: transform 1.6s ease-out;
+  }
+
+  .crop:hover .crop__image {
+    transform: scale(1.04);
+  }
+
+  .crop__caption {
+    margin-top: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-text-ash);
+  }
+
+  .crop__plus {
+    color: var(--color-accent);
+  }
+</style>
