@@ -22,10 +22,10 @@ export const projects: Project[] = [
     summary:
       'Repenser le parcours de don du sang pour combler le delta entre inscriptions et dons réels.',
     tags: ['UX/UI', 'Recherche', 'Concept digital'],
-    cover: '/images/projects/hug/onepager.jpg',
-    coverAlt: 'One-pager infographique du concept Pulse pour les HUG, avec la mascotte Courage',
+    cover: '/images/projects/hug/screenshot-home.jpg',
+    coverAlt: "Capture de la page d'accueil du site Pulse",
     coverStyle: 'browser',
-    coverPosition: 'center top',
+    coverPosition: 'top',
   },
   {
     slug: 'educhildren-odd',
