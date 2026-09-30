@@ -12,7 +12,7 @@ import LaptopMockup from '../../components/LaptopMockup.astro';
   <section>
     <div class="container">
       <LaptopMockup
-        src="/images/projects/fightstart/screenshot-home.webp"
+        src="/images/projects/fightstart/screenshot-home-hero.jpg"
         alt="Capture d'écran de la page d'accueil de FightStart.ch"
         url="fightstart.ch"
         objectPosition="top"
@@ -61,7 +61,13 @@ import LaptopMockup from '../../components/LaptopMockup.astro';
         réduction, et widget de contact WhatsApp.
       </p>
 
-      <div class="two-col" style="margin-top: 2.5rem; align-items: start;">
+      <div class="gallery gallery--3" style="margin-top: 2.5rem; align-items: start;">
+        <LaptopMockup
+          src="/images/projects/fightstart/screenshot-product.jpg"
+          alt="Fiche produit — Bandes de boxe HandWrap Pro"
+          objectPosition="top"
+          showDeck={false}
+        />
         <LaptopMockup
           src="/images/projects/fightstart/screenshot-shop.webp"
           alt="Capture d'écran de la boutique FightStart.ch"

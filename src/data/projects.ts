@@ -46,7 +46,7 @@ export const projects: Project[] = [
     summary:
       'Boutique en ligne de matériel de sport de combat pour débutants, de la stratégie à la mise en ligne.',
     tags: ['E-commerce', 'WordPress', 'Stratégie digitale'],
-    cover: '/images/projects/fightstart/screenshot-home.webp',
+    cover: '/images/projects/fightstart/screenshot-home-hero.jpg',
     coverAlt: 'Capture de la page d\'accueil de FightStart.ch',
     coverStyle: 'browser',
     coverPosition: 'top',
